@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio Website</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/img/Black White Simple Monochrome Initial Name Logo.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <style>
+      :root {
+    /* Colors
+    ____________________*/
+    --color-primary: #c70f0f;
+    --color-primary-dark: #2599ab;
+    --color-bg-primary: #1a1a1a;
+    --color-bg-secondary: #242424;
+    --color-bg-footer: #151515;
+    --color-white: #ffffff;
+    --color-text: #f4ecec;
+    --color-border: #373737;
+  
+    /* Font & Typography
+    ___________________*/
+    --ff-body: "Space Grotesk", sans-serif;
+    /* font sizes */
+    --fs-sm: 1.4rem;
+    --fs-md: 1.6rem;
+    --fs-lg: 2rem;
+    --fs-xl: 2.4rem;
+    --fs-xxl: 3.2rem;
+    --fs-biggest: clamp(3rem, 8vw, 5rem);
+    /* font weight */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+  
+    /* z-index
+    ___________________*/
+    --zindex-menu: 1000;
+    --zindex-fixed: 1010;
+  
+    /* With & Height 
+    ------------------*/
+    --width-container: 98rem;
+    --height-header: 10rem;
+    --height-header--scroll: 8rem;
+  
+    /* Transition and box shadow*/
+    --transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* CSS Reset
+  --------------------------------------------------------------*/
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-white);
+    font-weight: var(--fw-bold);
+  }
+  
+  html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+  }
+  
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  ul,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  
+  main {
+    overflow: hidden;
+  }
+  
+  body {
+    background-color: var(--color-bg-primary);
+    font-family: var(--ff-body);
+    font-size: var(--fs-md);
+    color: var(--color-text);
+    margin-top: var(--height-header);
+    line-height: 1.2;
+  }
+  
+  /* Reusable CSS
+  --------------------------------------------------------------*/
+  .container {
+    width: 90%;
+    max-width: var(--width-container);
+    margin: auto;
+  }
+  
+  .section {
+    padding: 5rem 0;
+  }
+  
+  .section__header {
+    margin: 8rem 0;
+    text-align: center;
+  }
+  
+  .section__title {
+    font-size: var(--fs-xl);
+    margin-bottom: 0.5rem;
+  }
+  
+  .section__subtitle {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-md);
+    position: relative;
+  }
+  
+  .section__subtitle::after {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 0.5rem;
+    background-color: var(--color-primary);
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .d-grid {
+    display: grid;
+    gap: 3rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+    transition: var(--transition);
+  }
+  
+  .btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+  .btn--primary:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  .btn--secondary {
+    background-color: var(--color-white);
+    color: var(--color-bg-primary);
+  }
+  
+  .btn--secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+  /* Header
+  --------------------------------------------------------------*/
+  .header {
+    background-color: var(--color-bg-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: var(--height-header);
+    z-index: var(--zindex-menu);
+    transition: var(--transition);
+  }
+  
+  .header--scroll {
+    height: var(--height-header--scroll);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .nav__brand {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+  
+  .nav__brand i {
+    color: var(--color-white);
+  }
+  
+  .nav__list {
+    display: flex;
+    column-gap: 4rem;
+  }
+  
+  .nav__link {
+    transition: var(--transition);
+  }
+  
+  .nav__link:hover {
+    color: var(--color-primary);
+  }
+  
+  .nav__toggle {
+    display: none;
+    font-size: var(--fs-xl);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .nav__toggle:hover {
+    color: var(--color-primary);
+  }
+  
+  @media screen and (max-width: 968px) {
+    .nav__list {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 4rem;
+    }
+  
+    .nav__menu {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--color-bg-primary);
+      display: none;
+      justify-content: center;
+      transition: var(--transition);
+    }
+  
+    .nav__menu--open {
+      display: flex;
+    }
+  
+    .nav__toggle {
+      display: block;
+    }
+  
+    .nav__brand,
+    .nav__toggle {
+      z-index: var(--zindex-fixed);
+    }
+  }
+  
+  /* Hero
+  --------------------------------------------------------------*/
+  .hero__wrapper {
+    min-height: calc(100vh - var(--height-header));
+    padding: 5rem 0;
+  }
+  
+  .hero__content {
+    text-align: center;
+  }
+  
+  .hero__title {
+    font-size: var(--fs-biggest);
+    margin-bottom: 5rem;
+    position: relative;
+  }
+  
+  .hero__title::after {
+    position: absolute;
+    content: "";
+    background-color: var(--color-primary);
+    width: 10rem;
+    height: 0.5rem;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hero__description {
+    margin-bottom: 5rem;
+  }
+  
+  .hero__info {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+  }
+  
+  .hero__info-number {
+    font-size: var(--fs-xxl);
+    font-weight: var(--fw-bold);
+    color: var(--color-white);
+    margin-bottom: 1rem;
+  }
+  
+  .hero__info-title {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-regular);
+    color: var(--color-text);
+  }
+  
+  @media screen and (max-width: 968px) {
+    .hero__img {
+      width: 280px;
+      justify-self: center;
+    }
+  }
+  
+  /* About
+  --------------------------------------------------------------*/
+  .about__content {
+    max-width: 50rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .about__title {
+    font-size: var(--fs-xxl);
+    margin-bottom: 3rem;
+  }
+  
+  .about__description {
+    margin-bottom: 3rem;
+  }
+  
+  .skills {
+    justify-self: center;
+  }
+  
+  .skills__title {
+    font-size: var(--fs-lg);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .skills__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .skills__content {
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--box-shadow);
+    padding: 3rem;
+  }
+  
+  .skills__item {
+    margin-bottom: 1rem;
+  }
+  
+  .skills__subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .skills__item i {
+    color: var(--color-primary);
+  }
+  
+  /* Qualification
+  --------------------------------------------------------------*/
+  .qualification__wrapper {
+    margin-bottom: 5rem;
+  }
+  
+  .qualification__content {
+    row-gap: 5rem;
+  }
+  
+  .qualification__name {
+    display: flex;
+    column-gap: 1rem;
+    font-size: var(--fs-lg);
+    margin-bottom: 5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .qualification__title {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-medium);
+    margin-bottom: 1rem;
+  }
+  
+  .qualification__description {
+    margin-bottom: 2rem;
+  }
+  
+  .qualification__date {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+  }
+  
+  .qualification__footer {
+    border-top: 1px solid var(--color-border);
+    margin-top: 10rem;
+    padding-top: 4rem;
+    text-align: center;
+  }
+  
+  .qualification__footer-text {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-white);
+    margin-bottom: 2rem;
+  }
+  
+  /* Services
+  --------------------------------------------------------------*/
+  .service__card {
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--box-shadow);
+    padding: 5rem 3.5rem;
+    width: 100%;
+    max-width: 30rem;
+    justify-self: center;
+    transition: var(--transition);
+  }
+  
+  .service__card:hover {
+    background-color: var(--color-primary);
+  }
+  
+  .service__card:hover .service__link {
+    color: var(--color-white);
+  }
+  
+  .service__icon {
+    font-size: 3.5rem;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+  }
+  
+  .service__title {
+    font-size: var(--fs-lg);
+    margin-bottom: 3rem;
+  }
+  
+  /* Projects
+  --------------------------------------------------------------*/
+  .project__content {
+    width: 100%;
+    max-width: 30rem;
+    justify-self: center;
+  }
+  
+  .project__img {
+    margin-bottom: 2rem;
+  }
+  
+  .project__title {
+    color: var(--color-white);
+    font-size: var(--fs-lg);
+    margin-bottom: 1rem;
+  }
+  
+  .project__description {
+    margin-bottom: 2rem;
+  }
+  
+  .project__link {
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    transition: var(--transition);
+  }
+  
+  .project__link:hover {
+    color: var(--color-primary);
+    column-gap: 1rem;
+  }
+  
+  /* Testimonials
+  --------------------------------------------------------------*/
+  .testimonial__card {
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--box-shadow);
+    padding: 3rem 5rem;
+    width: 100%;
+    max-width: 50rem;
+    text-align: center;
+    justify-self: center;
+    margin-bottom: 2rem;
+  }
+  
+  .testimonial__img {
+    max-width: 10rem;
+    border-radius: 50%;
+    margin: auto;
+    margin-bottom: 3rem;
+  }
+  
+  .testimonial__description {
+    color: var(--color-white);
+    margin-bottom: 3rem;
+  }
+  
+  .testimonial__name {
+    font-size: var(--fs-md);
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial__occupation {
+    font-size: var(--fs-sm);
+  }
+  
+  /* testimonial slide */
+  .testimonial__wrapper .swiper-wrapper {
+    padding-bottom: 5rem;
+  }
+  
+  .testimonial__wrapper .swiper-pagination-bullets {
+    justify-content: space-around;
+  }
+  
+  .testimonial__wrapper .swiper-pagination-bullet {
+    background-color: var(--color-text);
+    border-radius: 0;
+    width: 3rem;
+    height: 0.5rem;
+  }
+  
+  .testimonial__wrapper .swiper-pagination-bullet-active {
+    background-color: var(--color-primary);
+  }
+  
+  /* Contact
+  --------------------------------------------------------------*/
+  .contact__wrapper {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+    text-align: center;
+  }
+  
+  .contact__title {
+    font-size: var(--fs-xxl);
+    margin-bottom: 2rem;
+  }
+  
+  .contact__content {
+    max-width: 45rem;
+    margin: auto;
+  }
+  
+  .contact__description {
+    margin-bottom: 2rem;
+  }
+  
+  /* Footer
+  --------------------------------------------------------------*/
+  .footer {
+    background-color: var(--color-bg-footer);
+    padding: 5rem 0;
+  }
+  
+  .footer__wrapper {
+    border-bottom: 1px solid var(--color-bg-secondary);
+    padding: 5rem 0;
+    gap: 5rem;
+  }
+  
+  .footer__title {
+    font-size: var(--fs-lg);
+    margin-bottom: 2rem;
+  }
+  
+  .footer__social-list {
+    display: flex;
+    gap: 3rem;
+  }
+  
+  .footer__social-link {
+    font-size: 2rem;
+    color: var(--color-white);
+    transition: var(--transition);
+  }
+  
+  .footer__contact {
+    font-size: var(--fs-lg);
+    color: var(--color-white);
+    font-weight: var(--fw-bold);
+    text-decoration: underline;
+    transition: var(--transition);
+  }
+  
+  .footer__social-link:hover,
+  .footer__contact:hover {
+    color: var(--color-primary);
+  }
+  
+  .footer__copyright {
+    font-size: var(--fs-sm);
+    text-align: center;
+    padding-top: 3rem;
+  }
+  
+  /* Scrollbar
+  --------------------------------------------------------------*/
+  ::-webkit-scrollbar {
+    width: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-bg-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-text);
+    border-radius: 0.5rem;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+  }
+  
+  /* Breakpoints
+  --------------------------------------------------------------*/
+  
+  /* Medium devices*/
+  @media screen and (min-width: 560px) {
+    .service__wrapper {
+      grid-template-columns: repeat(2, 250px);
+      justify-content: center;
+    }
+  
+    .qualification__content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .qualification__footer {
+      text-align: initial;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .qualification__footer-text {
+      margin: 0;
+    }
+  
+    .project__wrapper {
+      grid-template-columns: repeat(2, 250px);
+      justify-content: center;
+    }
+  
+    .footer__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .hero__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+  
+    .hero__content {
+      text-align: initial;
+    }
+  
+    .hero__title::after {
+      transform: none;
+      left: 0;
+    }
+  
+    .hero__info {
+      justify-content: initial;
+    }
+  
+    .hero__img {
+      justify-self: flex-end;
+    }
+  }
+  
+  /* Large devices */
+  
+  @media screen and (min-width: 968px) {
+    .about__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .about__content {
+      margin: 0;
+    }
+  
+    .about__content,
+    .skills__title {
+      text-align: initial;
+    }
+  
+    .qualification__content,
+    .service__wrapper,
+    .project__wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .contact__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .contact__content {
+      margin: 0;
+      text-align: initial;
+    }
+  
+    .footer__wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+
+  .hero__img {
+    width: 280px;
+    border-color:#c70f0f;
+    border-width: 5px;
+    border-style:outset;
+    border-top-left-radius: 45px;
+    border-bottom-right-radius:45px;
+    justify-self: center;
+  }
+
+  
+    </style>
+  </head>
+
+  <body>
+    <header id="header" class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="nav__brand">
+            OJAS
+          </a>
+          <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#hero" class="nav__link">Home</a>
+              </li>
+              <li class="nav__item">
+                <a href="#about" class="nav__link">About</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#service" class="nav__link">Profiles</a>
+              </li>
+              <li class="nav__item">
+                <a href="#project" class="nav__link">Projects</a>
+              </li>
+              <li class="nav__item">
+                <a href="#Certificates" class="nav__link">Certificates</a>
+              </li>
+              <li class="nav__item">
+                <a href="#contact" class="nav__link">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav__toggle">
+            <i id="nav-toggle" class="ri-menu-3-line"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <section id="hero" class="hero">
+        <div class="container">
+          <div class="d-grid hero__wrapper">
+            <div class="hero__content">
+              <h1 class="hero__title">
+                Hi, I am <br />
+                Ojas Sangra & <br />I am a Student
+              </h1>
+              
+            </div>
+            
+            <img
+              src="assets/img/dp.jpeg"
+              alt="Aman"
+              class="hero__img"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- About  -->
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">About Me</h2>
+            <span class="section__subtitle">Who am I</span>
+          </div>
+          <div class="d-grid about__wrapper">
+            <div class="about__content">
+              <h3 class="about__title">I'm a Data Science Enthusiast and Frontend Developer.</h3>
+              <p class="about__description">
+                My name is Ojas Sangra. I'm a student pursuing bachelors in
+                Computer Science and Engineering at Siddhaganga Institute of
+                Technology, Bangalore in 3rd year. I'm most
+                passionate about giving back to the community, and my goal is to
+                pursue my passion. Altogether, I would sum up myself as an
+                enthusiast and a hardworker; who would do anything to complete
+                the task.
+              </p>
+              <hr>
+              <p>
+                I am a part of CORSIT which is the robotics club of SIT, working under the patronage of
+                IIT bombay. It works on various domains like web development, android development, photoshop 
+                , augmented Reality and many other robotics domains.
+                I am in web development team , and also i have made many robotics projects.
+              </p>
+              <hr>
+              <a
+                href="https://www.linkedin.com/in/ojas-sangra-942351220/"
+                class="btn btn--primary"
+                >Contact Me</a
+              >
+            </div>
+            <div class="skills">
+              <h3 class="skills__title">My Skills</h3>
+              <div class="skills__wrapper">
+                <div class="skills__content">
+                  <h4 class="skills__subtitle"></h4>
+                  <ul class="skills__list">
+                    <li class="skills__item">
+                      <i class="fa-brands fa-python"></i> Python
+                    </li>
+                    <li class="skills__item">
+                      <i class=""></i> C++
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa fa-file-excel-o"></i> Excel
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-regular fa-square"></i>
+                      SQL
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa fa-database"></i> DBMS
+                    </li>
+                    <li class="skills__item">
+                      <i class=""></i>Arduino
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-github"></i> Github
+                    </li>
+                    <li class="skills__item">
+                      <i class=""></i> Data Visualisation
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-python"></i> Pandas
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-python"></i> Numpy
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-python"></i> Matplotlib
+                    </li>
+                    <li class="skills__item">
+                      <i class=""></i> Tableau
+                    </li>
+                  </ul>
+                </div>
+                <div class="skills__content">
+                  <h4 class="skills__subtitle"></h4>
+                  <ul class="skills__list">
+                    <li class="skills__item">
+                      <i class="fa-brands fa-html5"></i>
+                      HTML
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-css3-alt"></i>
+                      CSS
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-js"></i>
+                      JavaScript
+                    </li>
+                    <li class="skills__item">
+                      <i class="fa-brands fa-bootstrap"></i>
+                      Bootstrap
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- services  -->
+      <section id="service" class="section service">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">Coding Profiles</h2>
+            <span class="section__subtitle">Where I Stand</span>
+          </div>
+          <div class="d-grid service__wrapper">
+            <!-- service card 1 -->
+
+            <div class="service__card">
+              <div class="service__icon">
+                <a href="https://leetcode.com/OjasSangra/" target="_blank"
+                  ><img src="/assets/img/leetcode.png" alt=""
+                /></a>
+              </div>
+              <h3 class="service__title">
+                Leetcode <br />
+                <p>I have solved more than 150 problems on leetcode</p>
+              </h3>
+              <a href="https://leetcode.com/OjasSangra/" class="service__link"
+                >Know More</a
+              >
+            </div>
+
+            <div class="service__card">
+              <div class="service__icon">
+                <a
+                  href="https://www.hackerrank.com/ojassangra"
+                  target="_blank"
+                  ><img src="/assets/img/hackerrank.png" alt=""
+                /></a>
+              </div>
+              <h3 class="service__title">
+                Hackerrank<br />Visit my hackerrank profile <br />
+              </h3>
+              <a
+                href="https://www.hackerrank.com/ojassangra"
+                class="service__link"
+                >Know More</a
+              >
+            </div>
+
+            <div class="service__card">
+              <div class="service__icon">
+                <a
+                  href="https://auth.geeksforgeeks.org/user/ojassangra/practice"
+                  target="_blank"
+                  ><img src="/assets/img/gfg.png" alt=""
+                /></a>
+              </div>
+              <h3 class="service__title">
+                Geeksforgeeks<br />I have solve more than 100 problems on GFG<br />
+              </h3>
+              <a
+                href="https://auth.geeksforgeeks.org/user/ojassangra/practice"
+                class="service__link"
+                >Know More</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="project" class="section project">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">Projects</h2>
+            <span class="section__subtitle">My recent work</span>
+          </div>
+          <div class="d-grid project__wrapper">
+            <!-- pr#1 -->
+            <div class="project__content">
+              <img
+                src="assets/img/assisstant.png"
+                alt="ecommerce Website"
+                class="project__img"
+              />
+              <h3 class="project__title">Desktop Voice Assistant using Python</h3>
+              <p class="project__description">
+                A desktop voice assisstant made by using python and speech recognition.
+                Includes functions like play music , open youtube , open google , search wikipedia , 
+                show weather , tell time, write/show notes , crack jokes etc.
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/Desktop-VoiceAssistant"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+
+            <!-- pr#2 -->
+            <div class="project__content">
+              <img
+                src="assets/img/tic-tac-toe.jpg"
+                alt="portfolio"
+                class="project__img"
+              />
+              <h3 class="project__title">Tic-Tac-Toe game using Python</h3>
+              <p class="project__description">
+                A simple tic_tac_toe game made with basic python programming 
+                involving simple logic, and the input values that have to be inserted 
+                in 3x3 matrix are connected to numeric keypad of keyboard.
+                
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/Tic_Tac_Toe_game"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+
+            <!-- pr#3 -->
+            <div class="project__content">
+              <img
+                src="assets/img/OIP.jpeg"
+                alt="error"
+                class="project__img"
+              />
+              <h3 class="project__title">Spotify_clone</h3>
+              <p class="project__description">
+                A simple spotify clone made with html , css and javascript. 
+                The functions included are songs pause , play , next , previous , forward , rewind.
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/Spotify_clone"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+                ></a>
+            </div>
+
+
+            <div class="project__content">
+              <img
+                src="assets/img/abstract_bio.jpeg"
+                alt="ecommerce Website"
+                class="project__img"
+              />
+              <h3 class="project__title">Biometric Attendance System</h3>
+              <p class="project__description">
+                This presents a simple and portable approach to student attendance system that 
+                 records the attendance using fingerprint based biometric scanner
+                 and stores them securely over cloud.
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/Biometric-Attendance-System"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+
+
+            <div class="project__content">
+              <img
+                src="assets/img/feed.jpeg"
+                alt="ecommerce Website"
+                class="project__img"
+              />
+              <h3 class="project__title">Feedback-Form</h3>
+              <p class="project__description">
+                Ready to use feedback form which stores data in firebase (realtime database).
+                 Involves use of html, css, javascript and firebase console to store realltime data. 
+                 Every validation as of email and contact is checked and customized.
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/feedback-form"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+
+
+            <div class="project__content">
+              <img
+                src="assets/img/lfr.jpeg"
+                alt="ecommerce Website"
+                class="project__img"
+              />
+              <h3 class="project__title">Line Follower Robot</h3>
+              <p class="project__description">
+                The line follower robot is a mobile machine that can detect 
+                and follow the line drawn on the floor. Generally, the path is predefined and can be visible 
+                like a black line on a white surface with a high contrasted color.It works on the principle of IR sensors.
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/corsit---line-following-robot"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+
+
+
+            
+            <div class="project__content">
+              <img
+                src="assets/img/eyeb.jpeg"
+                alt="ecommerce Website"
+                class="project__img"
+              />
+              <h3 class="project__title">Eye Motion Controlled Cursor</h3>
+              <p class="project__description">
+                By using the eye tracking mechanism, we can fix the centroid on the eye based on the centroid 
+                we need to track that paralyzed person’s eye this eye track mechanism involves many applications
+                 like home automation by using python GUI robotic Control and virtual keyboard application.
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/EyeControlledCursor"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+
+
+
+
+            <div class="project__content">
+              <img
+                src="assets/img/star.jpeg"
+                alt="error"
+                class="project__img"
+              />
+              <h3 class="project__title">MOVIE_RATING_ANALYSIS</h3>
+              <p class="project__description">
+                This is a data analysis and visualisation project ,where we compare the data of app called fandango 
+                and we compare the ratings and stars on this app to other movie rating sources.
+                (which is a movie rating and ticket selling platform)
+                Here we came on a conclusion that some movie sites that both sell movie tickets and give ratings to the 
+                movies , have a conflict of interest.And often give fasle or increased ratings to the movies.
+
+              </p>
+              <a
+                href="https://github.com/OJASSANGRA/MOVIE_RATING_ANALYSIS"
+                class="project__link"
+                >Source Code <i class="ri-arrow-right-line"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+<!--certificates-->
+
+
+
+
+<section id="Certificates" class="section project">
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">Let's see</h2>
+
+      <span class="section__subtitle">My Certifications</span>
+    </div>
+    <div class="d-grid project__wrapper">
+      <!-- c1 -->
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert3.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">Completion - Introduction to c++</h3>
+      </div>
+
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert2.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">Excellence - Introduction to c++</h3>
+      </div>
+
+      <div class="project__content">
+        <img
+          src="assets/img/az.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">Microsoft Azure FundamentalsExam Prep</h3>
+      </div>
+
+
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert4.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">C programming</h3>
+      </div>
+
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert5.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">Python</h3>
+      </div>
+
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert6.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">SQL</h3>
+      </div>
+
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert7.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">Tableau for Data Visualization</h3>
+      </div>
+
+
+      <div class="project__content">
+        <img
+          src="assets/img/cert8.jpeg"
+          alt="ecommerce Website"
+          class="project__img"
+        />
+        <h3 class="project__title">Valorant Participation</h3>
+      </div>
+      </section>
+
+
+      <!--Contact -->
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="d-grid contact__wrapper">
+            <div class="contact__content">
+              <h2 class="contact__title">
+                Interested in working together? Let's talk
+              </h2>
+            </div>
+            <div class="contact__btn">
+              <a
+                href="https://www.linkedin.com/in/ojas-sangra-942351220/"
+                target="_blank"
+                class="btn btn--secondary"
+                >Get in touch</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- footer -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="d-grid footer__wrapper">
+          <div class="footer__content">
+            <h4 class="footer__title">Follow Me</h4>
+            <ul class="footer__social-list">
+              <li class="footer__social-item">
+                <a
+                  href="https://www.linkedin.com/in/ojas-sangra-942351220/"
+                  class="footer__social-link"
+                >
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+              </li>
+              <li class="footer__social-item">
+                <a
+                  href="https://instagram.com/ojassangra?igshid=ZDdkNTZiNTM="
+                  class="footer__social-link"
+                >
+                  <i class="ri-instagram-fill"></i>
+                </a>
+              </li>
+              <li class="footer__social-item">
+                <a
+                  href="https://github.com/OJASSANGRA"
+                  class="footer__social-link"
+                >
+                  <i class="ri-github-fill"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__content">
+            <h4 class="footer__title">Email Me</h4>
+            <a href="#" class="footer__contact">ojassangra@gmail.com</a>
+          </div>
+          <!-- <div class="footer__content">
+            <h4 class="footer__title">Call Me</h4>
+            <a href="#" class="footer__contact">955402xxxx</a>
+          </div> -->
+        </div>
+        <p class="footer__copyright">
+          &copy; Designed and Coded by OjasSangra        </p>
+
+        
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
